@@ -17,10 +17,20 @@
     Route::get('/home', function () {
 
         $movies = [
-            // ['title' => 'The matrix', 'year' => 1999],
-            // ['title' => 'Incepting', 'year' => 2009],
-            // ['title' => 'Black Panther', 'year' => 2022],
-            // ['title' => 'Avatar', 'year' => 2023],
+            ['title' => 'The matrix', 'year' => 1999],
+            ['title' => 'Incepting', 'year' => 2009],
+            ['title' => 'Black Panther', 'year' => 2022],
+            ['title' => 'spiderman', 'year' => 2023],
+            ['title' => 'rambo', 'year' => 2015],
+            ['title' => 'Jaguar', 'year' => 2023],
+            ['title' => 'Naruto', 'year' => 2017],
+            ['title' => 'One Piece', 'year' => 2007],
+            ['title' => 'Parasite', 'year' => 2008],
+            ['title' => 'The Godfather', 'year' => 2023],
+            ['title' => 'Wolf', 'year' => 2018],
+            ['title' => 'Upin Ipin', 'year' => 1945],
+            ['title' => 'avengers', 'year' => 2023],
+            ['title' => 'Flash', 'year' => 2025],
 
         ];
 
