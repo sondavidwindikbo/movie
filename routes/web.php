@@ -7,7 +7,7 @@
     use Illuminate\Support\Facades\Route;
 
     Route::get('/', function () {
-        return view('welcome');
+        return view('app');
     });
 
     Route::get('/utama', function () {
@@ -15,28 +15,7 @@
     });
 
     Route::get('/home', function () {
-
-        $movies = [
-            ['title' => 'The matrix', 'year' => 1999],
-            ['title' => 'Incepting', 'year' => 2009],
-            ['title' => 'Black Panther', 'year' => 2022],
-            ['title' => 'spiderman', 'year' => 2023],
-            ['title' => 'rambo', 'year' => 2015],
-            ['title' => 'Jaguar', 'year' => 2023],
-            ['title' => 'Naruto', 'year' => 2017],
-            ['title' => 'One Piece', 'year' => 2007],
-            ['title' => 'Parasite', 'year' => 2008],
-            ['title' => 'The Godfather', 'year' => 2023],
-            ['title' => 'Wolf', 'year' => 2018],
-            ['title' => 'Upin Ipin', 'year' => 1945],
-            ['title' => 'avengers', 'year' => 2023],
-            ['title' => 'Flash', 'year' => 2025],
-
-        ];
-
-
-
-        return view('home', compact('movies'));
+        return view('home');
     });
 
 
@@ -53,11 +32,11 @@
             'as' => 'movie.',
 
         ],
-        function () use ($movies) {
+        function () {
 
-            Route::get('/', [MovieController::class, 'index']);
-            Route::get('/{id}', [MovieController::class, 'show']);
-            Route::post('/', [MovieController::class, 'store']);
+            Route::get('/', [MovieController::class, 'index'])->name('index');
+            Route::get('/create', [MovieController::class, 'create'])->name('create');
+            Route::get('/{id}', [MovieController::class, 'show'])->name('show');
             Route::put('/{id}', [MovieController::class, 'update']);
             Route::patch('/{id}', [MovieController::class, 'update']);
             Route::delete('/{id}', [MovieController::class, 'destroy']);
