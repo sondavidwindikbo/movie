@@ -7,7 +7,7 @@
     use Illuminate\Support\Facades\Route;
 
     Route::get('/', function () {
-        return view('app');
+        return view('welcome');
     });
 
     Route::get('/utama', function () {
@@ -35,8 +35,11 @@
         function () {
 
             Route::get('/', [MovieController::class, 'index'])->name('index');
+
             Route::get('/create', [MovieController::class, 'create'])->name('create');
+
             Route::get('/{id}', [MovieController::class, 'show'])->name('show');
+            Route::post('/', [MovieController::class, 'store'])->name('store');
             Route::put('/{id}', [MovieController::class, 'update']);
             Route::patch('/{id}', [MovieController::class, 'update']);
             Route::delete('/{id}', [MovieController::class, 'destroy']);

@@ -132,15 +132,21 @@ class MovieController extends Controller
         return view('movies.show', ['movie' => $movie]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $this->movies[] = [
-            'title' => request('title'),
-            'year'  => request('year'),
-            'genre' => request('genre'),
+        $newMovie = [
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'release_date' => $request['release_date'],
+            'cast' => explode(',', $request['cast']),
+            'genre' => explode(',', $request['genre']),
+            'image' => $request['image'],
+
         ];
 
-        return $this->movies;
+        $this->movies[] = $newMovie;
+
+        return $this->index();
     }
 
     public function update(Request $request, $id)
