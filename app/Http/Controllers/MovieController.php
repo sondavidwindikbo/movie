@@ -139,7 +139,7 @@ class MovieController extends Controller
             'description' => $request['description'],
             'release_date' => $request['release_date'],
             'cast' => explode(',', $request['cast']),
-            'genre' => explode(',', $request['genre']),
+            'genres' => explode(',', $request['genres']),
             'image' => $request['image'],
 
         ];
@@ -148,18 +148,25 @@ class MovieController extends Controller
 
         return $this->index();
     }
+    
+    public function edit($id){
+        $movie = $this->movies[$id];
+        $movie['cast'] = implode(',', $movie['cast']);
+        $movie['genres'] = implode(',', $movie['genres']);
+        return view('movies.edit', ['movie' => $movie, 'movieId' => $id]);
+    }
 
     public function update(Request $request, $id)
     {
-        $this->movies[$id]['title'] = request('title');
-        $this->movies[$id]['year'] = request('year');
-        $this->movies[$id]['genre'] = request('genre');
+        $this->movies[$id]['title'] = $request['title'];
+        $this->movies[$id]['description'] = $request['description'];
+        $this->movies[$id]['release_date'] =$request['release_date'];
+        $this->movies[$id]['cast'] = explode(',',$request['cast'] );
+        $this->movies[$id]['genres'] = explode(',',$request['genres'] );
+        $this->movies[$id]['image'] = $request['image'];
 
-        return $this->movies;
+        return $this->show($id);
 
-        return $request->all();
-
-        dd($user);
     }
 
 
