@@ -31,8 +31,14 @@
          </p>
 
          <div class="flex space-x-4 mt-6">
-             <button class="bg-green-600 px-3 py-2 rounded hover:bg-green-500">✏️ Edit</button>
-             <button class="bg-red-600 px-3 py-2 rounded hover:bg-red-500">🗑️ Delete</button>
+             <a href="{{route('movie.edit', $movieId)}}"
+             class="bg-green-600 px-3 py-2 rounded hover:bg-green-500">✏️ Edit</a>
+
+              <form id="delete-form-{{$movieId}}" action="{{route ('movie.destroy', $movieId)}}" style="display: none;" method="POST">
+                    @csrf
+                    @method('DELETE')
+                </form>
+                <a href="{{route ('movie.destroy', $movieId)}}" onclick="event.preventDefault(); confirm('are you sure'); document.getElementById('delete-form-{{$movieId}}').submit();" class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</a>
          </div>
      </div>
  </div>

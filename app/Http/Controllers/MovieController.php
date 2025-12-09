@@ -129,7 +129,7 @@ class MovieController extends Controller
     {
 
         $movie = $this->movies[$id];
-        return view('movies.show', ['movie' => $movie]);
+        return view('movies.show', ['movie' => $movie, 'movieId' => $id]);
     }
 
     public function store(Request $request)
@@ -174,7 +174,7 @@ class MovieController extends Controller
     {
         unset($this->movies[$id]);
 
-        return $this->movies;
+        return $this->index();
     }
 
     public function create()
