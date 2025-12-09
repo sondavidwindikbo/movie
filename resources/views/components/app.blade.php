@@ -12,9 +12,17 @@
    <x-partials.header></x-partials.header>
     <!-- @include('_partials._header') -->
 
-    <main class="container mx-auto p-5 mt-24">
-        {{ $slot }}
+    <div class="min-h-screen flex">
+        <aside class="w-64 bg-gray-800 p-6 text-white">
+            {{ $sidebar}}
+        </aside>
+
+        <main class="flex-1 p-6 bg-gray-900">
+        {{ $main }}
     </main>
+
+    </div>
+    
 </body>
 
 </html>
