@@ -17,7 +17,7 @@
                 :index="$loop->index"
                 :title="$movie['title']"
                 :image="$movie['image']"
-                :release_date="$movie['release_date']">
+                :releasedate="$movie['release_date']">
             </x-movie.card>
             @endforeach
         </div>

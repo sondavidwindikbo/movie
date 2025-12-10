@@ -2,33 +2,31 @@
 
 namespace App\View\Components\Movie;
 
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 class Card extends Component
 {
     public $index;
     public $title;
-    public $releasedate;
+    public $releasedate; // Sudah benar
     public $image;
 
-    /**
-     * Create a new component instance.
-     */
-    public function __construct($index = null, $title = null, $releasedate = null, $image = null)
+    public function __construct($index, $title, $releasedate, $image)
     {
         $this->index = $index;
-        $this->title = $title;
-        $this->releasedate = $releasedate;
+        $this->title = Str::upper($title);
+        // $this->title = $title;
+        $this->releasedate = Carbon::parse($releasedate)->format('M d, Y'); // Sudah benar
         $this->image = $image;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
     public function render(): View|Closure|string
     {
+       
         return view('components.movie.card');
     }
 }
