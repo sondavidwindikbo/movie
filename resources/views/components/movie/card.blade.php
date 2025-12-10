@@ -1,0 +1,18 @@
+<div class="bg-gray-800 p-4 rounded relative group">
+    <a href="{{route('movie.show',$index)}}">
+        <div class="bg-gray-800 p-4 rounded relative group">
+            <img src="{{ $image}}" alt="{{ $title }}" class="w-full rounded-md">
+            <h3 class="text-lg mt-2">{{ $title }}</h3>
+            <p class="text-sm text-gray-400">{{ $releasedate }}</p> <!-- Ubah dari $release_date ke $releasedate -->
+
+            <div class="absolute top-2 right-2 flex space-x-2 opacity-0 group-hover:opacity-100 transition">
+                <a class="bg-green-600 p-1 rounded hover:bg-green-500">✏️</a>
+                <form id="delete-form-{{$index}}" action="{{route ('movie.destroy',$index)}}" style="display: none;" method="POST">
+                    @csrf
+                    @method('DELETE')
+                </form>
+                <a href="{{route ('movie.destroy',$index)}}" onclick="event.preventDefault(); confirm('are you sure'); document.getElementById('delete-form-{{$index}}').submit();" class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</a>
+            </div>
+        </div>
+    </a>
+</div>

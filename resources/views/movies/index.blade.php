@@ -5,21 +5,21 @@
 
     <div class="bg-gray-800 p-4 rounded relative group">
         <a href="{{route('movie.show', $loop->index)}}">
-        <div class="bg-gray-800 p-4 rounded relative group">
-            <img src="{{ $movie['image'] }}" alt="{{ $movie['title'] }}" class="w-full rounded-md">
-            <h3 class="text-lg mt-2">{{ $movie['title'] }}</h3>
-            <p class="text-sm text-gray-400">{{ $movie['release_date'] }}</p>
+            <div class="bg-gray-800 p-4 rounded relative group">
+                <img src="{{ $movie['image'] }}" alt="{{ $movie['title'] }}" class="w-full rounded-md">
+                <h3 class="text-lg mt-2">{{ $movie['title'] }}</h3>
+                <p class="text-sm text-gray-400">{{ $movie['release_date'] }}</p>
 
-            <div  class="absolute top-2 right-2 flex space-x-2 opacity-0 group-hover:opacity-100 transition">
-                <a class="bg-green-600 p-1 rounded hover:bg-green-500">✏️</a >
-                <form id="delete-form-{{$loop->index}}" action="{{route ('movie.destroy', $loop->index)}}" style="display: none;" method="POST">
-                    @csrf
-                    @method('DELETE')
-                </form>
-                <a href="{{route ('movie.destroy', $loop->index)}}" onclick="event.preventDefault(); confirm('are you sure'); document.getElementById('delete-form-{{$loop->index}}').submit();" class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</a>
+                <div class="absolute top-2 right-2 flex space-x-2 opacity-0 group-hover:opacity-100 transition">
+                    <a class="bg-green-600 p-1 rounded hover:bg-green-500">✏️</a>
+                    <form id="delete-form-{{$loop->index}}" action="{{route ('movie.destroy', $loop->index)}}" style="display: none;" method="POST">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    <a href="{{route ('movie.destroy', $loop->index)}}" onclick="event.preventDefault(); confirm('are you sure'); document.getElementById('delete-form-{{$loop->index}}').submit();" class="bg-red-600 p-1 rounded hover:bg-red-500">🗑️</a>
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
     </div>
 
     @endforeach
