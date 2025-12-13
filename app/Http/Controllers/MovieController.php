@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use illuminate\Routing\Controllers\HasMiddleware;
 use illuminate\Routing\Controllers\Middleware;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\IdentityMarshaller;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class MovieController extends Controller
 {
@@ -134,6 +135,11 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required'
+        ]);
+
         $newMovie = [
             'title' => $request['title'],
             'description' => $request['description'],

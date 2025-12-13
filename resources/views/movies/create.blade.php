@@ -1,7 +1,9 @@
 @extends('app')
 
 @section('content')
+{{$errors}}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
     <h2 class="text-2xl font-bold mb-6">Add Movie</h2>
     <form class="space-y-6" action="{{route('movie.store')}}" method="POST">
         @csrf
