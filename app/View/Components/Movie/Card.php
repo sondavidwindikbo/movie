@@ -30,7 +30,15 @@ class Card extends Component
 
     private function isValid(): bool
     {
-        return $this->title && $this->releasedate && $this->image;
+        return $this->title && $this->releasedate;
+    }
+
+    public function getImage(): string
+    {
+        if ($this->image) {
+            return $this->image;
+        }
+        return 'https://placehold.co/300x450/000000/FFF';
     }
 
     public function render(): View|Closure|string

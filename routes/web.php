@@ -46,7 +46,7 @@
                 'release_date' => '2021-12-17',
                 'cast' => ['Tom Holland', 'Zendaya', 'Benedict Cumberbatch', 'Tobey Maguire', 'Andrew Garfield'],
                 'genres' => ['Action', 'Superhero', 'Fantasy'],
-                'image' => 'https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg',
+                'image' => '',
             ],
             [
                 'title' => 'The Batman',
