@@ -18,15 +18,26 @@ class Card extends Component
     public function __construct($index, $title, $releasedate, $image)
     {
         $this->index = $index;
-        $this->title = Str::upper($title);
-        // $this->title = $title;
-        $this->releasedate = Carbon::parse($releasedate)->format('M d, Y'); // Sudah benar
+        $this->title = $title;
+        $this->releasedate = $releasedate;
         $this->image = $image;
+
+        if ($this->isValid()) {
+            $this->title = Str::upper($title);
+            $this->releasedate = Carbon::parse($releasedate)->format('M d, Y');
+        }
+    }
+
+    private function isValid(): bool
+    {
+        return $this->title && $this->releasedate && $this->image;
     }
 
     public function render(): View|Closure|string
     {
-       
+        if(!$this->isValid()){
+            return '';
+        }
         return view('components.movie.card');
     }
 }

@@ -17,7 +17,7 @@
                 'image' => 'https://upload.wikimedia.org/wikipedia/id/4/4a/Oppenheimer_%28film%29.jpg',
             ],
             [
-                'title' => 'Inception',
+                'title' => '',
                 'description' => 'A sci-fi thriller about dream infiltration led by a thief with the ability to enter people’s subconscious.',
                 'release_date' => '2010-07-16',
                 'cast' => ['Leonardo DiCaprio', 'Joseph Gordon-Levitt', 'Elliot Page', 'Tom Hardy'],
