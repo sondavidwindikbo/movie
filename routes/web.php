@@ -242,3 +242,13 @@
 
         return redirect('/');
     });
+
+
+    Route::get('/session', function (Request $request) {
+        // session(['days' => ['sunday', 'monday', 'tuesday']]);
+        // session()->push('days','friday');
+        // session()->put('days', array_diff(session('days'), ['friday']));
+        // session()->put('is_membership', 'true');
+        session()->forget('is_membership');
+        return $request->session()->all();
+    });
