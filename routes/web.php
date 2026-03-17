@@ -1,6 +1,7 @@
  <?php
 
-    use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
     use App\Http\Controllers\MovieController;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Response;
@@ -252,3 +253,5 @@
         session()->forget('is_membership');
         return $request->session()->all();
     });
+
+    Route::get('categories', [CategoryController::class,'index']);
