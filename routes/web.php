@@ -3,7 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
     use App\Http\Controllers\MovieController;
-    use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Response;
     use Illuminate\Support\Facades\Route;
 
@@ -258,3 +259,6 @@ use App\Http\Controllers\HomeController;
     Route::post('categories', [CategoryController::class,'store']);
     Route::put('categories/{id}',[CategoryController::class,'update']);
     Route::delete('categories/{id}',[CategoryController::class,'destroy']);
+
+    Route::post('user/profile', [UserController::class, 'createProfile']);
+    Route::get('user/profile', [UserController::class, 'userProfile']);
