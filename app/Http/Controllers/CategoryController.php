@@ -84,12 +84,45 @@ class CategoryController extends Controller
     }
     
     public function update(Request $request, $id){
-        $category = DB::table('categories')->where('id', $id)->update([
+        
+    //cara 1
+    // $category = DB::table('categories')->where('id', $id)->update([
+        //     'name' => $request['name'],
+        //     'slug' => Str::of($request['name'])->slug('-'),
+        //     'updated_at' => now(),
+        // ]);
+
+        //cara dua
+        // $category = Category::findOrFail($id);
+        // if($category) {
+        //     $category->name = $request['name'];
+        //  $category->slug = Str::of($request['name'])->slug('-');
+        //  $category->save();
+        // }
+
+        $category = Category::where('id', $id)->update([
             'name' => $request['name'],
             'slug' => Str::of($request['name'])->slug('-'),
             'updated_at' => now(),
         ]);
 
+
         return $category;
+    }
+
+    public function destroy($id){
+        //cara satu use query builder
+        //  DB::table('categories')->where('id',$id)->delete();   
+
+        //cara 2 use eloqent
+        // $category = Category::find($id);
+
+        // if($category){
+        //     $category->delete();
+        // }
+
+         Category::destroy($id);
+
+         return true;
     }
 }
