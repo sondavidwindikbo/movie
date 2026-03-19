@@ -30,4 +30,25 @@ class UserController extends Controller
 
         return $user;
     }
+
+    public function updateProfile(){
+
+        $user = User::find(1);
+
+
+        $user->profile()->update([
+            'phone' => '87654321',
+            'address' => 'st mainr 123'
+        ]);
+
+        return $user;
+    }
+
+    public function deleteProfile(){
+        $user = User::find(1);
+
+        $user->profile()->delete();
+
+        return $user;
+    }
 }

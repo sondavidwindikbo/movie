@@ -262,3 +262,5 @@ use Illuminate\Http\Request;
 
     Route::post('user/profile', [UserController::class, 'createProfile']);
     Route::get('user/profile', [UserController::class, 'userProfile']);
+    Route::put('user/profile', [UserController::class, 'updateProfile']);
+    Route::delete('user/profile', [UserController::class, 'deleteProfile']);
