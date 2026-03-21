@@ -211,4 +211,15 @@ class MovieController extends Controller
 
         return $movie->with('categories')->first();
     }
+
+    public function syncCategory() {
+        $movie = Movie::find(1);
+        $movie->categories()->sync(1, 4, 5);
+        // $movie->categories()->sync([1, 2]);
+
+        // $category = Category::find(3);
+        // $category->movies()->sync([1]);
+
+        return $movie->with('categories')->first();
+    }
 }
