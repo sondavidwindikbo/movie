@@ -11,10 +11,14 @@
 @if($errors->any())
 
     <ul>
-        @foreach {$error->all()}
+        @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
         @endforeach
     </ul>
-<form action="{{route(register.store)}}" method="POST">
+
+@endif
+
+<form action="{{route('register.store')}}" method="POST">
     @csrf
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
@@ -23,7 +27,7 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password">
     <label for="password_confirmation">Password Confirmation</label>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password_confirmation" >
     <button type="submit">Register</button>
 </form>
     

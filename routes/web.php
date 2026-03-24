@@ -1,12 +1,12 @@
  <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
+    use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\CategoryController;
+    use App\Http\Controllers\HomeController;
     use App\Http\Controllers\MovieController;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
+    use App\Http\Controllers\RatingController;
+    use App\Http\Controllers\UserController;
+    use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Response;
     use Illuminate\Support\Facades\Route;
 
@@ -257,22 +257,44 @@ use Illuminate\Http\Request;
         return $request->session()->all();
     });
 
-    Route::get('categories', [CategoryController::class,'index']);
-    Route::post('categories', [CategoryController::class,'store']);
-    Route::put('categories/{id}',[CategoryController::class,'update']);
-    Route::delete('categories/{id}',[CategoryController::class,'destroy']);
+    Route::get('categories', [CategoryController::class, 'index']);
+    Route::post('categories', [CategoryController::class, 'store']);
+    Route::put('categories/{id}', [CategoryController::class, 'update']);
+    Route::delete('categories/{id}', [CategoryController::class, 'destroy']);
 
     Route::post('user/profile', [UserController::class, 'createProfile']);
     Route::get('user/profile', [UserController::class, 'userProfile']);
     Route::put('user/profile', [UserController::class, 'updateProfile']);
     Route::delete('user/profile', [UserController::class, 'deleteProfile']);
 
-    Route::get('rating',[RatingController::class, 'index']);
+    Route::get('rating', [RatingController::class, 'index']);
 
-    Route::get('attach-category', [MovieController::class,'attachCategory']);
-    Route::get('detach-category', [MovieController::class,'detachCategory']);
-    Route::get('sync-category',[MovieController::class,'syncCategory']);
+    Route::get('attach-category', [MovieController::class, 'attachCategory']);
+    Route::get('detach-category', [MovieController::class, 'detachCategory']);
+    Route::get('sync-category', [MovieController::class, 'syncCategory']);
 
-    Route::get('register',[AuthController::class,'showRegisterForm'])->name('register.form');
-    Route::post('register',[AuthController::class,'register'])->name('register.store');
-    Route::get('login',[AuthController::class, 'showLoginForm'])->name('Login.form');
+    Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register.form');
+    Route::post('register', [AuthController::class, 'register'])->name('register.store');
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login.form');
+    Route::post('login', [AuthController::class, 'login'])->name('login.store');
+
+    Route::get('dashboard', function () {
+        return 'Dashboard';
+    })->name('dashboard');
+
+    // Route::get(['middleare' => 'auth'], function(){
+    //     Route::get('profile', function(){
+    //         return 'Profile';
+    //     });
+    //     Route::get('logout', function(){
+    //         return 'Logout';
+    //     });
+    // });
+    Route::middleware('auth')->group(function () {
+        Route::get('dashboard', function () {
+            return view('Dashboard');
+        })->name('dashboard');
+
+        Route::post('logout', [AuthController::class, 'logout']);
+        
+    });
