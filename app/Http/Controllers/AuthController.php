@@ -27,7 +27,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('login.form')->with('success','Registration succesful!');
+        return redirect()->route('login')->with('success','Registration succesful!');
     }
 
     public function showLoginForm()
@@ -66,5 +66,10 @@ class AuthController extends Controller
         }
 
         return back()->with('error','Invalid credential');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'Logout successful!');
     }
 }

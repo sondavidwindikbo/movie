@@ -275,7 +275,7 @@
 
     Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register.form');
     Route::post('register', [AuthController::class, 'register'])->name('register.store');
-    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login.form');
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('login', [AuthController::class, 'login'])->name('login.store');
 
     Route::get('dashboard', function () {
@@ -295,6 +295,6 @@
             return view('Dashboard');
         })->name('dashboard');
 
-        Route::post('logout', [AuthController::class, 'logout']);
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
         
     });
